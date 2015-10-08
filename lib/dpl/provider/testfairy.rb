@@ -72,8 +72,9 @@ module DPL
       end
 
       def download_from_url(url)
-        puts "downloading from #{url} "
+
         url = "#{url}?api_key=#{option(:api_key)}"
+        puts "downloading from #{url}"
         uri = URI.parse(url)
         instrumentedFile = Net::HTTP.start(uri.host, uri.port) do |http|
           resp = http.get(uri.path)
