@@ -72,8 +72,8 @@ module DPL
       end
 
       def download_from_url(url)
-        puts "downloading  from #{url} "
-        uri = URI.parse(url)
+        puts "downloading from #{url} "
+        uri = URI.parse(url + "?api_key=" + #{option(:api_key))
         instrumentedFile = Net::HTTP.start(uri.host, uri.port) do |http|
           resp = http.get(uri.path)
           file = Tempfile.new(['instrumented', '.apk'])
